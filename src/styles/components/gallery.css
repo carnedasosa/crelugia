@@ -99,6 +99,7 @@
 .lightbox {
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   max-width: none;
   max-height: none;
   margin: 0;
@@ -122,6 +123,7 @@
 
 .lightbox__img {
   max-height: calc(100vh - 8rem);
+  max-height: calc(100dvh - 8rem);
   width: auto;
   object-fit: contain;
   border-radius: var(--radius-sm);

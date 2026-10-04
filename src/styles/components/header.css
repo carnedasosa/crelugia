@@ -3,12 +3,22 @@
   inset: 0 0 auto;
   z-index: 100;
   height: var(--header-h);
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   transition:
     background-color 0.4s var(--ease-out),
     box-shadow 0.4s var(--ease-out);
 }
 
-.header.is-scrolled {
+/* Lo sfondo sfocato sta su uno pseudo-elemento: un backdrop-filter sull'header
+   diventerebbe il containing block del menu mobile (position: fixed),
+   che verrebbe ritagliato all'altezza dell'header. */
+.header.is-scrolled::before {
   background: rgb(245 239 230 / 0.86);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -163,14 +173,22 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
+    gap: 2rem;
     padding: 2rem var(--gutter) 3rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
     background: var(--calce);
     clip-path: inset(0 0 100% 0);
-    transition: clip-path 0.6s var(--ease-in-out);
+    visibility: hidden;
+    transition:
+      clip-path 0.6s var(--ease-in-out),
+      visibility 0s 0.6s;
   }
 
   .header.is-open .nav {
     clip-path: inset(0);
+    visibility: visible;
+    transition-delay: 0s;
   }
 
   .nav__list {
@@ -180,12 +198,19 @@
 
   .nav__link {
     font-family: var(--font-display);
-    font-size: 2.6rem;
+    font-size: clamp(1.6rem, 0.9rem + 4.5vh, 2.6rem);
     line-height: 1.2;
   }
 
-  .header.is-open {
+  .header.is-open::before {
     background: var(--calce);
+  }
+}
+
+/* Telefono in orizzontale: menu più compatto */
+@media (max-width: 1080px) and (max-height: 500px) {
+  .nav {
+    padding-block: 1rem 1.5rem;
   }
 }
 
