@@ -1,4 +1,4 @@
-import { html } from '../core/dom.js';
+import { html, $$ } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 import { site } from '../config/site.js';
 import { faq } from '../data/faq.js';
@@ -50,7 +50,7 @@ export default {
             <h3 class="faq__title">${t('faq.title')}</h3>
             ${faq.map(
               (id) => html`
-                <details class="faq__item">
+                <details class="faq__item" name="faq">
                   <summary>${t(`faq.items.${id}.q`)}<span class="faq__icon">${icon('plus', { size: 18 })}</span></summary>
                   <p>${t(`faq.items.${id}.a`)}</p>
                 </details>`,
@@ -60,4 +60,18 @@ export default {
       </div>
     </section>
   `,
+
+  /** Accordion esclusivo: aprendo una domanda si chiudono le altre
+   *  (fallback per i browser che non supportano `<details name>`). */
+  mount(root) {
+    const items = $$('.faq__item', root);
+    const onToggle = (event) => {
+      if (!event.target.open) return;
+      items.forEach((item) => {
+        if (item !== event.target) item.open = false;
+      });
+    };
+    items.forEach((item) => item.addEventListener('toggle', onToggle));
+    return () => items.forEach((item) => item.removeEventListener('toggle', onToggle));
+  },
 };
