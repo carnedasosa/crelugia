@@ -15,10 +15,13 @@ const sortedPlaces = () =>
 async function createMap(container, list) {
   const [{ default: L }] = await Promise.all([import('leaflet'), import('leaflet/dist/leaflet.css')]);
 
-  const map = L.map(container, { scrollWheelZoom: false, zoomControl: true, attributionControl: true }).setView(
+  const map = L.map(container, { scrollWheelZoom: false, zoomControl: false, attributionControl: true }).setView(
     [site.geo.lat, site.geo.lng],
     16,
   );
+
+  // In alto a sinistra i controlli finirebbero sotto la curva dell'arco.
+  L.control.zoom({ position: 'bottomleft' }).addTo(map);
 
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,

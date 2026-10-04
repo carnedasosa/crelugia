@@ -52,6 +52,19 @@ export default {
     $$('.nav__link', header).forEach((a) => a.addEventListener('click', () => setOpen(false)));
     $$('[data-lang]', header).forEach((btn) => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
 
+    // Esc chiude il menu; passando al layout desktop (es. rotazione del tablet)
+    // il menu va chiuso, altrimenti il body resterebbe bloccato.
+    const onKey = (e) => {
+      if (e.key === 'Escape' && header.classList.contains('is-open')) {
+        setOpen(false);
+        burger.focus();
+      }
+    };
+    const desktop = window.matchMedia('(min-width: 1081px)');
+    const onBreakpoint = (e) => e.matches && setOpen(false);
+    document.addEventListener('keydown', onKey);
+    desktop.addEventListener('change', onBreakpoint);
+
     // Header compatto dopo l'hero + evidenziazione della sezione corrente.
     const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 40);
     onScroll();
@@ -74,6 +87,8 @@ export default {
 
     return () => {
       window.removeEventListener('scroll', onScroll);
+      document.removeEventListener('keydown', onKey);
+      desktop.removeEventListener('change', onBreakpoint);
       spy.disconnect();
       document.body.classList.remove('no-scroll');
     };
