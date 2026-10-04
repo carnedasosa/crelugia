@@ -31,8 +31,10 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: var(--header-h);
+  /* `safe`: se il contenuto è più alto dello spazio disponibile non
+     sborda verso l'alto finendo sotto l'header. */
+  justify-content: safe center;
+  padding-top: calc(var(--header-h) + 1.5rem);
   opacity: calc(1 - var(--p) * 2.2);
   transform: translateY(calc(var(--p) * -120px));
 }
