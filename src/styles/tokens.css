@@ -1,0 +1,56 @@
+/*
+ * Design token — palette ricavata dalla casa:
+ * calce delle pareti, terracotta del bagno e dell'ingresso,
+ * salvia dei cuscini, rovere dei pavimenti, grafite della cucina.
+ */
+:root {
+  /* Colori */
+  --calce: #f5efe6;
+  --calce-2: #ece3d5;
+  --sabbia: #d8c6ad;
+  --terracotta: #b4573e;
+  --mattone: #8f3b2a;
+  --salvia: #7f8e74;
+  --salvia-scura: #4c5946;
+  --rovere: #c29a6b;
+  --grafite: #2a2421;
+  --grafite-2: #3a322e;
+
+  --bg: var(--calce);
+  --bg-tint: var(--calce-2);
+  --text: var(--grafite);
+  --text-soft: #62574f;
+  --line: rgb(42 36 33 / 0.14);
+  --accent: var(--mattone);
+  --accent-hover: var(--terracotta);
+  --on-dark: #f3ebdf;
+  --on-dark-soft: rgb(243 235 223 / 0.68);
+  --line-dark: rgb(243 235 223 / 0.16);
+
+  /* Tipografia */
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  --fs-display: clamp(2.4rem, 1.6rem + 3.2vw, 4.6rem);
+  --fs-hero: clamp(3rem, 1.6rem + 5vw, 6.4rem);
+
+  /* Spazi e forme */
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 3rem);
+  --section: clamp(5rem, 3rem + 8vw, 10rem);
+  --container: 1280px;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --header-h: 76px;
+
+  /* Movimento */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur: 0.9s;
+
+  --shadow: 0 30px 60px -30px rgb(42 36 33 / 0.35);
+}

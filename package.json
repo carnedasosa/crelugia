@@ -1,0 +1,18 @@
+{
+  "name": "crelugia-home",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sito ufficiale di Crelugia Home — Style & Comfort near Bari Vecchia",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}

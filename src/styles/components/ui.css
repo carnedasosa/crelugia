@@ -1,0 +1,117 @@
+/* Elementi riutilizzabili: bottoni, chip, campi */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 52px;
+  padding: 0 1.6rem;
+  border-radius: 999px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid transparent;
+  transition:
+    background-color 0.3s var(--ease-out),
+    color 0.3s var(--ease-out),
+    border-color 0.3s var(--ease-out),
+    transform 0.3s var(--ease-out);
+}
+
+.btn .icon {
+  transition: transform 0.3s var(--ease-out);
+}
+
+.btn:hover .icon--arrow {
+  transform: translateX(4px);
+}
+
+.btn--solid {
+  background: var(--accent);
+  color: var(--calce);
+}
+
+.btn--solid:hover {
+  background: var(--accent-hover);
+}
+
+.btn--ghost {
+  border-color: var(--line);
+  color: var(--text);
+}
+
+.btn--ghost:hover {
+  border-color: var(--text);
+}
+
+.btn--ghost-light {
+  border-color: rgb(245 239 230 / 0.35);
+  color: var(--calce);
+}
+
+.btn--ghost-light:hover {
+  background: var(--calce);
+  color: var(--grafite);
+}
+
+.btn--small {
+  min-height: 42px;
+  padding: 0 1.15rem;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  color: var(--text-soft);
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.field__label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: var(--calce);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.icon {
+  flex-shrink: 0;
+}

@@ -1,0 +1,178 @@
+.sleeping__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: center;
+}
+
+.sleeping .section-head {
+  margin-bottom: 0;
+}
+
+.guests {
+  margin-top: 2.5rem;
+}
+
+.guests__label {
+  font-size: var(--fs-sm);
+  color: var(--text-soft);
+}
+
+.guests__label strong {
+  color: var(--text);
+}
+
+.guests__dots {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.85rem;
+}
+
+.guests__dot {
+  width: 30px;
+  height: 38px;
+  border-radius: 15px 15px 5px 5px;
+  background: var(--sabbia);
+  transition:
+    background-color 0.35s var(--ease-out),
+    transform 0.35s var(--ease-out);
+  transition-delay: calc(var(--d) * 40ms);
+}
+
+.guests__dot.is-active {
+  background: var(--mattone);
+  transform: translateY(-6px);
+}
+
+.zones {
+  margin-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.zones__item {
+  padding: 1.1rem 0.25rem;
+  border-bottom: 1px solid var(--line);
+  cursor: default;
+  transition: padding-left 0.35s var(--ease-out);
+}
+
+.zones__item.is-active {
+  padding-left: 1rem;
+}
+
+.zones__name {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.zones__name span {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.zones__beds {
+  font-size: var(--fs-sm);
+  color: var(--text-soft);
+}
+
+/* Planimetria */
+.plan svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.plan figcaption {
+  margin-top: 1rem;
+  font-size: var(--fs-xs);
+  color: var(--text-soft);
+  text-align: right;
+}
+
+.plan__walls {
+  fill: var(--calce);
+  stroke: var(--grafite);
+  stroke-width: 3;
+}
+
+.plan__room {
+  fill: transparent;
+  stroke: var(--sabbia);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 4;
+  transition: fill 0.35s var(--ease-out);
+}
+
+.plan__label,
+.plan__entrance {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  fill: var(--text-soft);
+}
+
+.plan__zone--sleep {
+  cursor: pointer;
+}
+
+.plan__zone--sleep:focus {
+  outline: none;
+}
+
+.plan__zone--sleep:hover .plan__room,
+.plan__zone--sleep:focus-visible .plan__room,
+.plan__zone--sleep.is-active .plan__room {
+  fill: rgb(143 59 42 / 0.08);
+  stroke: var(--mattone);
+  stroke-dasharray: none;
+}
+
+.plan__bed rect {
+  fill: var(--calce-2);
+  stroke: var(--grafite);
+  stroke-width: 1.5;
+  transition: fill 0.35s var(--ease-out);
+}
+
+.plan__bed .plan__pillow {
+  fill: var(--calce);
+}
+
+.plan__zone--sleep.is-active .plan__bed rect:first-child {
+  fill: var(--salvia);
+}
+
+.plan__furniture > * {
+  fill: none;
+  stroke: var(--sabbia);
+  stroke-width: 1.5;
+}
+
+.plan__door {
+  fill: none;
+  stroke: var(--grafite);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 3;
+}
+
+@media (max-width: 900px) {
+  .sleeping__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* L'SVG si rimpicciolisce: le etichette crescono per restare leggibili */
+@media (max-width: 600px) {
+  .plan__label,
+  .plan__entrance {
+    font-size: 19px;
+    letter-spacing: 0.04em;
+  }
+}

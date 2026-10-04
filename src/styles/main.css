@@ -1,0 +1,19 @@
+/* Punto d'ingresso degli stili: l'ordine conta (token → base → layout → componenti). */
+@import './tokens.css';
+@import './base.css';
+@import './layout.css';
+
+@import './components/ui.css';
+@import './components/loader.css';
+@import './components/header.css';
+@import './components/hero.css';
+@import './components/intro.css';
+@import './components/story.css';
+@import './components/sleeping.css';
+@import './components/amenities.css';
+@import './components/gallery.css';
+@import './components/around.css';
+@import './components/reviews.css';
+@import './components/info.css';
+@import './components/booking.css';
+@import './components/footer.css';

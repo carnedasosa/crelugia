@@ -1,0 +1,204 @@
+.around__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: stretch;
+}
+
+.places {
+  border-top: 1px solid var(--line-dark);
+}
+
+.place {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2rem 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0.25rem;
+  border-bottom: 1px solid var(--line-dark);
+  text-align: left;
+  transition:
+    background-color 0.3s,
+    padding-left 0.4s var(--ease-out);
+}
+
+.place:hover,
+.place.is-active {
+  padding-left: 0.85rem;
+  background: rgb(243 235 223 / 0.04);
+}
+
+.place__num {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-dark);
+  border-radius: 50%;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+}
+
+.place.is-active .place__num {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+}
+
+.place__body {
+  display: grid;
+}
+
+.place__name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.place__text {
+  font-size: var(--fs-sm);
+  color: var(--on-dark-soft);
+}
+
+.place__time {
+  display: grid;
+  text-align: right;
+}
+
+.place__time strong {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--rovere);
+  line-height: 1;
+}
+
+.place__time small {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--on-dark-soft);
+}
+
+.map {
+  min-height: 520px;
+  background: var(--grafite-2);
+  isolation: isolate;
+}
+
+/* Mappa OSM virata verso i toni della palette */
+.map .leaflet-tile-pane {
+  filter: grayscale(0.85) sepia(0.25) contrast(0.95) brightness(1.03);
+}
+
+/* Marker personalizzati Leaflet (specificità doppia per battere leaflet.css) */
+.leaflet-marker-icon.map-home {
+  display: grid;
+  place-items: center;
+  background: var(--mattone);
+  color: var(--calce);
+  border-radius: 50% 50% 8px 8px;
+  box-shadow: 0 10px 25px -8px rgb(0 0 0 / 0.5);
+}
+
+.leaflet-marker-icon.map-pin {
+  display: grid;
+  place-items: center;
+  background: var(--grafite);
+  color: var(--calce);
+  border: 2px solid var(--calce);
+  border-radius: 50%;
+  font: 600 12px var(--font-body);
+}
+
+.leaflet-tooltip {
+  font-family: var(--font-body);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+}
+
+/* Itinerario */
+.day {
+  margin-top: clamp(4rem, 8vw, 7rem);
+}
+
+.day__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 500;
+  font-style: italic;
+  margin-bottom: 2.5rem;
+}
+
+.day__line {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(200px, 1fr);
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-dark) transparent;
+}
+
+.day__step {
+  position: relative;
+  padding-top: 2rem;
+  scroll-snap-align: start;
+}
+
+.day__step::before {
+  content: '';
+  position: absolute;
+  top: 0.45rem;
+  left: 0;
+  right: -1.5rem;
+  height: 1px;
+  background: var(--line-dark);
+}
+
+.day__step::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.95rem;
+  height: 0.95rem;
+  border-radius: 50%;
+  background: var(--rovere);
+}
+
+.day__step:last-child::before {
+  right: 0;
+}
+
+.day__time {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--rovere);
+}
+
+.day__name {
+  margin-top: 0.4rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+}
+
+.day__text {
+  margin-top: 0.35rem;
+  font-size: var(--fs-sm);
+  color: var(--on-dark-soft);
+}
+
+@media (max-width: 900px) {
+  .around__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .map {
+    min-height: 380px;
+    order: -1;
+  }
+}

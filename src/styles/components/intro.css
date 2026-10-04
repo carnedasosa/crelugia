@@ -1,0 +1,90 @@
+/* Fascia col motto */
+.marquee {
+  overflow: hidden;
+  background: var(--mattone);
+  color: var(--calce);
+  padding-block: 1.1rem;
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  gap: 2.5rem;
+  animation: marquee 50s linear infinite;
+}
+
+.marquee__track span {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.4rem);
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.marquee__dot {
+  color: var(--rovere);
+  font-style: normal !important;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Benvenuto */
+.intro {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(3rem, 6vw, 7rem);
+  align-items: center;
+}
+
+.intro__body {
+  margin-top: 2rem;
+  font-size: var(--fs-lg);
+  color: var(--text-soft);
+  max-width: 34rem;
+}
+
+.intro__signature {
+  margin-top: 2rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--accent);
+}
+
+.intro__media {
+  position: relative;
+  padding: 0 0 4rem 4rem;
+}
+
+.intro__img--main {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  box-shadow: var(--shadow);
+}
+
+.intro__img--sign {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 46%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 8px solid var(--bg);
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 900px) {
+  .intro {
+    grid-template-columns: 1fr;
+  }
+
+  .intro__media {
+    max-width: 30rem;
+    padding: 0 0 3rem 3rem;
+  }
+}

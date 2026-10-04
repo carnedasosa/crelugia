@@ -1,0 +1,151 @@
+.story__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 7vw, 8rem);
+}
+
+.story__step {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0.25;
+  transition: opacity 0.6s var(--ease-out);
+}
+
+.story__step.is-active {
+  opacity: 1;
+}
+
+.story__step:last-child {
+  min-height: 60vh;
+}
+
+.story__inline {
+  display: none;
+}
+
+.story__index {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--text-soft);
+}
+
+.story__name {
+  margin-top: 1.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 2rem + 5vw, 6.5rem);
+  font-style: italic;
+  line-height: 0.9;
+  color: var(--accent);
+}
+
+.story__title {
+  margin-top: 1rem;
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.story__text {
+  margin: 1rem 0 1.75rem;
+  max-width: 30rem;
+  color: var(--text-soft);
+}
+
+.story__media {
+  position: sticky;
+  top: calc(var(--header-h) + 4vh);
+  height: calc(100vh - var(--header-h) - 8vh);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.story__frame {
+  position: relative;
+  flex: 1;
+  box-shadow: var(--shadow);
+}
+
+.story__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.08);
+  transition:
+    opacity 0.9s var(--ease-out),
+    transform 1.6s var(--ease-out);
+}
+
+.story__img.is-active {
+  opacity: 1;
+  transform: none;
+}
+
+.story__dots {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
+.story__dots li {
+  position: relative;
+  padding-top: 0.75rem;
+  transition: color 0.4s;
+}
+
+.story__dots li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--line);
+}
+
+.story__dots li.is-active {
+  color: var(--accent);
+}
+
+.story__dots li.is-active::before {
+  background: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .story__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .story__media {
+    display: none;
+  }
+
+  .story__step,
+  .story__step:last-child {
+    min-height: 0;
+    opacity: 1;
+    padding-bottom: 4rem;
+  }
+
+  .story__inline {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3.4;
+    object-fit: cover;
+    margin-bottom: 1.75rem;
+  }
+
+  .story__name {
+    margin-top: 0.75rem;
+  }
+}
